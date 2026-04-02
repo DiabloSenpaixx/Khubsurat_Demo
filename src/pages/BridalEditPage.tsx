@@ -70,18 +70,23 @@ const ProductCard: React.FC<{ item: any, index: number, onNavigate?: (page: 'hom
   );
 };
 
+import { PRODUCTS } from '../data/products';
+
 export function BridalEditPage({ onNavigate }: { onNavigate?: (page: 'home' | 'product' | 'bridal-edit', id?: string) => void }) {
   const { isAdmin } = useAuth();
-  const [catalog, setCatalog] = useState<any[]>([]);
+  const [catalog, setCatalog] = useState<any[]>(Object.values(PRODUCTS));
   const [editingProduct, setEditingProduct] = useState<any>(null);
 
   const fetchProducts = async () => {
     try {
       const res = await fetch('/api/products');
+      if (!res.ok) throw new Error('API failed');
       const data = await res.json();
-      setCatalog(data);
+      if (data && data.length > 0) {
+        setCatalog(data);
+      }
     } catch (err) {
-      console.error(err);
+      console.log('Using local fallback data for demo:', err);
     }
   };
 
