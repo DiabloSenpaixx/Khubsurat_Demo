@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Manrope:wght@300;400;600;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1f0101;
+  --color-primary-container: #4a0404;
+  --color-on-primary: #ffffff;
+  --color-secondary: #9c7b0d;
+  --color-secondary-container: #fed65b;
+  --color-surface: #fdfdf5;
+  --color-surface-container: #f5f5e6;
+  --color-surface-container-low: #f9f9ee;
+  --color-surface-container-highest: #ebebcc;
+  --color-surface-dim: #dbdcc3;
+  --color-on-surface: #121309;
+  --color-on-surface-variant: #554240;
+  --color-outline: #89726f;
+  --color-outline-variant: #dcc0bd;
+  
+  --font-serif: "Noto Serif", serif;
+  --font-sans: "Manrope", sans-serif;
+
+  --radius-none: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-sans selection:bg-secondary-container selection:text-primary;
+  }
+  
+  /* Custom scrollbar for a premium look */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { @apply bg-surface; }
+  ::-webkit-scrollbar-thumb { @apply bg-secondary/70 hover:bg-secondary transition-colors; }
+
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-surface/70 backdrop-blur-xl border border-surface/30 shadow-[0_8px_32px_0_rgba(31,1,1,0.05)];
+  }
+
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-secondary-container via-secondary to-[#c29f27];
+  }
+
+  .bg-mesh {
+    background-color: var(--color-primary);
+    background-image: radial-gradient(at 40% 20%, var(--color-primary-container) 0px, transparent 50%),
+                      radial-gradient(at 80% 0%, var(--color-secondary) 0px, transparent 50%),
+                      radial-gradient(at 0% 50%, var(--color-primary) 0px, transparent 50%);
+  }
+
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  /* Smooth reveal animation utilities */
+  .reveal-blur {
+    animation: revealBlur 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes revealBlur {
+    0% { opacity: 0; filter: blur(10px); transform: translateY(20px); }
+    100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+  }
+}
