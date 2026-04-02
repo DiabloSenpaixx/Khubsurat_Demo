@@ -10,16 +10,6 @@ const db = new sqlite3.Database(dbPath);
 
 const initialProducts = [
   {
-    id: 'zoya-lehenga',
-    name: 'The Zoya Lehenga',
-    description: 'Deep Red Velvet with Heavy Antique Zardozi',
-    details: 'A classic traditional piece, the Zoya Lehenga comes with heavy antique zardozi, dabka, and naqshi kaam on a rich red velvet stuff. It includes a fully loaded lehenga, a stitched choli, and a pure net dupatta with cutwork borders.',
-    images: ["https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1200&auto=format&fit=crop", "https://images.unsplash.com/photo-1583391733958-d25e07fac044?q=80&w=1200&auto=format&fit=crop", "https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1200&auto=format&fit=crop", "https://images.unsplash.com/photo-1585914924626-15adac1e6402?q=80&w=1200&auto=format&fit=crop"],
-    tag: 'Order Only',
-    buyPrice: '$4,500',
-    rentPrice: '$650'
-  },
-  {
     id: 'opulent-gown',
     name: 'The Serene Aquamarine Gown',
     description: 'Heavy silver zari kaam on pure net fabric, complete with a long trail.',

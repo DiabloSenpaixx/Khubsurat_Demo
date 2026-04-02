@@ -3,8 +3,8 @@ import { Heart, Share2, Box, Sparkles, ShieldCheck, Globe, Calendar, ArrowRight,
 import { motion, AnimatePresence } from 'framer-motion';
 import { PRODUCTS } from '../data/products';
 
-export function ProductPage({ productId = 'zoya-lehenga' }: { productId?: string }) {
-  const product = PRODUCTS[productId] || PRODUCTS['zoya-lehenga'];
+export function ProductPage({ productId = 'opulent-gown' }: { productId?: string }) {
+  const product = PRODUCTS[productId] || PRODUCTS['opulent-gown'];
   
   const [activeImage, setActiveImage] = useState(0);
   const [purchaseMode, setPurchaseMode] = useState<'buy' | 'rent'>('rent');
